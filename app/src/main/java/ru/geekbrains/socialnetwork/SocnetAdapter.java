@@ -93,6 +93,17 @@ public class SocnetAdapter extends RecyclerView.Adapter<SocnetAdapter.ViewHolder
                     listener.onItemClick(v, adapterPosition);
                 }
             });
+            like.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    notifyItemChanged(getAdapterPosition());
+                    if(like.isChecked()){
+                        dataSource.getSoc(getAdapterPosition()).setLike(true);
+                    } else{
+                        dataSource.getSoc(getAdapterPosition()).setLike(false);
+                    }
+                }
+            });
         }
 
         public void setData(String description, int picture, boolean like){
